@@ -63,19 +63,19 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "h-full transition-all duration-300 ease-in-out fixed left-0 top-0 z-30 glass border-r",
+        "h-full transition-all duration-300 ease-in-out fixed left-0 top-0 z-30 glass border-r border-white/5",
         isOpen ? "w-64" : "w-16"
       )}
     >
       <div className="flex flex-col h-full">
         <div className={cn(
-          "flex items-center p-4 h-14 border-b border-border/50",
+          "flex items-center p-4 h-14 border-b border-white/5",
           isOpen ? "justify-between" : "justify-center"
         )}>
           {isOpen && (
             <div className="flex items-center">
-              <Youtube className="h-5 w-5 text-youtube-red" />
-              <span className="ml-2 font-semibold">YouTube Browser</span>
+              <Youtube className="h-5 w-5 text-red-600" />
+              <span className="ml-2 font-semibold font-montserrat">YouTube Browser</span>
             </div>
           )}
           <Button
@@ -83,7 +83,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
             size="icon"
             onClick={toggleSidebar}
             className={cn(
-              "h-8 w-8 rounded-full",
+              "h-8 w-8 rounded-full hover:bg-red-500/20 hover:text-red-500",
               !isOpen && "mx-auto"
             )}
           >
@@ -94,7 +94,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
         <div className="flex-1 overflow-y-auto custom-scrollbar">
           <div className="py-2">
             <div className="px-3 py-2">
-              {isOpen && <p className="text-xs text-muted-foreground mb-2">Main</p>}
+              {isOpen && <p className="text-xs text-red-500/80 mb-2 font-medium tracking-wider uppercase">Main</p>}
               <nav className="space-y-1">
                 {mainNavItems.map((item) => (
                   <NavLink
@@ -102,8 +102,8 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                     to={item.path}
                     className={({ isActive }) =>
                       cn(
-                        "flex items-center px-3 py-2 text-sm rounded-md transition-colors",
-                        isActive ? "bg-accent text-accent-foreground" : "hover:bg-accent/50",
+                        "flex items-center px-3 py-2 text-sm rounded-md transition-all",
+                        isActive ? "bg-red-500/20 text-red-500" : "hover:bg-black/40 hover:text-red-400",
                         !isOpen && "justify-center"
                       )
                     }
@@ -116,15 +116,15 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
             </div>
 
             <div className="px-3 py-2">
-              {isOpen && <p className="text-xs text-muted-foreground mb-2">Library</p>}
+              {isOpen && <p className="text-xs text-red-500/80 mb-2 font-medium tracking-wider uppercase">Library</p>}
               <nav className="space-y-1">
                 {libraryItems.map((item) => (
                   <a
                     key={item.name}
                     href={item.path}
                     className={cn(
-                      "flex items-center px-3 py-2 text-sm rounded-md transition-colors",
-                      item.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-accent/50",
+                      "flex items-center px-3 py-2 text-sm rounded-md transition-all",
+                      item.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-black/40 hover:text-red-400",
                       !isOpen && "justify-center"
                     )}
                     onClick={(e) => item.disabled && handleDisabledLink(e, item.name)}
@@ -138,13 +138,13 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
           </div>
         </div>
 
-        <div className="mt-auto border-t border-border/50 p-4">
+        <div className="mt-auto border-t border-white/5 p-4">
           <NavLink
             to="/settings"
             className={({ isActive }) =>
               cn(
-                "flex items-center px-3 py-2 text-sm rounded-md transition-colors",
-                isActive ? "bg-accent text-accent-foreground" : "hover:bg-accent/50",
+                "flex items-center px-3 py-2 text-sm rounded-md transition-all",
+                isActive ? "bg-red-500/20 text-red-500" : "hover:bg-black/40 hover:text-red-400",
                 !isOpen && "justify-center"
               )
             }

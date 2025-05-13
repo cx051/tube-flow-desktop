@@ -41,7 +41,7 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
             placeholder="Search videos, channels or playlists..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-10 h-11 bg-secondary/50 border-secondary focus:border-primary"
+            className="pl-10 pr-10 h-11 bg-black/40 border-white/10 focus-within:border-red-500 rounded-md"
           />
           <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
           {searchQuery && (
@@ -59,10 +59,10 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
         
         <div className="flex gap-2">
           <Select value={searchType} onValueChange={setSearchType}>
-            <SelectTrigger className="w-[180px] h-11 bg-secondary/50 border-secondary">
+            <SelectTrigger className="w-[180px] h-11 bg-black/40 border-white/10 rounded-md">
               <SelectValue placeholder="Search type" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-black border border-white/10">
               <SelectGroup>
                 <SelectItem value="video">Videos</SelectItem>
                 <SelectItem value="channel">Channels</SelectItem>
@@ -71,7 +71,11 @@ export function SearchBar({ onSearch, isLoading }: SearchBarProps) {
             </SelectContent>
           </Select>
           
-          <Button type="submit" className="h-11 px-6" disabled={isLoading || !searchQuery.trim()}>
+          <Button 
+            type="submit" 
+            className="h-11 px-6 btn-shine bg-red-600 hover:bg-red-700 text-white font-medium transition-all" 
+            disabled={isLoading || !searchQuery.trim()}
+          >
             {isLoading ? (
               <Loader2 className="h-4 w-4 animate-spin mr-2" />
             ) : (

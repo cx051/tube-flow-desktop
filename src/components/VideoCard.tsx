@@ -44,7 +44,7 @@ export function VideoCard({
   return (
     <div 
       className={cn(
-        "video-card rounded-xl overflow-hidden border border-border/50 bg-card transition-all duration-500 animate-slide-up",
+        "video-card rounded-md overflow-hidden border border-white/5 bg-card transition-all duration-500 animate-slide-up cursor-pointer",
         !isLoaded && "animate-pulse"
       )}
       style={{ 
@@ -53,10 +53,10 @@ export function VideoCard({
       }}
       onClick={onClick}
     >
-      <div className="relative aspect-video bg-background/50 overflow-hidden">
+      <div className="relative aspect-video bg-black/50 overflow-hidden">
         {!isLoaded && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-8 h-8 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-red-500/30 border-t-red-500 rounded-full animate-spin"></div>
           </div>
         )}
         <img
@@ -68,22 +68,22 @@ export function VideoCard({
           )}
           onLoad={() => setIsLoaded(true)}
         />
-        <div className="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded text-xs">
+        <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 rounded text-xs font-medium">
           <Clock className="w-3 h-3 inline mr-1" />
           {formatRelativeTime(publishedAt)}
         </div>
       </div>
       
       <div className="p-3">
-        <h3 className="font-medium line-clamp-2 mb-2 text-sm md:text-base" title={title}>
+        <h3 className="font-medium line-clamp-2 mb-2 text-sm md:text-base font-montserrat" title={title}>
           {title}
         </h3>
         
-        <div className="flex items-center text-xs text-muted-foreground mt-1">
-          <User2 className="w-3 h-3 mr-1" />
+        <div className="flex items-center text-xs text-muted-foreground mt-2">
+          <User2 className="w-3 h-3 mr-1 text-red-400" />
           <span className="truncate mr-3" title={channelTitle}>{channelTitle}</span>
           
-          <Eye className="w-3 h-3 mr-1" />
+          <Eye className="w-3 h-3 mr-1 text-red-400" />
           <span>{formatNumber(viewCount)} views</span>
         </div>
       </div>
